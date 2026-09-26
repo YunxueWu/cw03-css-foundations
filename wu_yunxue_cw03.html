@@ -390,8 +390,9 @@ a {
          <p>Component classes are less reusable outside the timetable context. If I want to use the same color elsewhere, I must create a new class or duplicate the rule.</p>
 
          <h3>Version History Diff</h3>
-         <img src="images/gr01-diff.png" alt="Git show output showing commit differences" class="evidence-img">
-         <p class="caption">Figure GR01: Git history showing the component-oriented architecture commit.</p>
+<img src="images/gr01-diff.png" alt="Git diff showing CSS changes between utility and component architectures" class="evidence-img">
+<p class="caption">Figure GR01: Git diff showing the change from utility-oriented to component-oriented architecture, including the media query and comparison table updates.</p>
+
 
          <h3>Naming Decision</h3>
          <p>I chose <code>.timetable__cell--lecture</code> (BEM naming) over <code>.lecture</code> because it clearly shows the relationship between the cell and the timetable component.</p>
@@ -401,56 +402,41 @@ a {
       </section>
 
       <!-- GR 02 -->
-      <section id="gr02">
-         <h2>GR 02: Design a CSS Performance Experiment</h2>
+<section id="gr02">
+   <h2>GR 02: Design a CSS Performance Experiment</h2>
 
-         <p><strong>Falsifiable claim:</strong> A timetable styled with <code>box-shadow</code> renders slower than the same timetable without <code>box-shadow</code>.</p>
+   <p><strong>Falsifiable claim:</strong> A timetable styled with <code>box-shadow</code> renders slower than the same timetable without <code>box-shadow</code>.</p>
 
-         <p><strong>Null hypothesis:</strong> There is no measurable difference in render time between the two versions.</p>
+   <p><strong>Null hypothesis:</strong> There is no measurable difference in render time between the two versions.</p>
 
-         <h3>Experiment Design</h3>
-         <ul>
-            <li><strong>Independent variable:</strong> presence or absence of <code>box-shadow</code> on table cells.</li>
-            <li><strong>Dependent variable:</strong> First Contentful Paint (FCP) time, measured via DevTools Performance tab.</li>
-            <li><strong>Controlled variables:</strong> same browser (Chrome 120), same machine, same viewport (1200px), same test page, same number of cells.</li>
-         </ul>
+   <h3>Experiment Design</h3>
+   <ul>
+      <li><strong>Independent variable:</strong> presence or absence of <code>box-shadow</code> on table cells.</li>
+      <li><strong>Dependent variable:</strong> Largest Contentful Paint (LCP) time, measured via DevTools Performance tab.</li>
+      <li><strong>Controlled variables:</strong> same browser (Chrome), same machine, same viewport (1200px), same test page, same number of cells.</li>
+   </ul>
 
-         <h3>Raw Measurements (5 trials each)</h3>
-         <table class="comparison-table">
-            <thead>
-               <tr>
-                  <th>Trial</th>
-                  <th>With box-shadow (ms)</th>
-                  <th>Without box-shadow (ms)</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr><td>1</td><td>42</td><td>38</td></tr>
-               <tr><td>2</td><td>45</td><td>37</td></tr>
-               <tr><td>3</td><td>41</td><td>39</td></tr>
-               <tr><td>4</td><td>44</td><td>38</td></tr>
-               <tr><td>5</td><td>43</td><td>37</td></tr>
-            </tbody>
-         </table>
+   <h3>Raw Measurement</h3>
+   <img src="images/gr02-measurements.png" alt="DevTools Performance panel showing LCP 0.08s and CLS 0.72" class="evidence-img">
+   <p class="caption">Figure GR02: DevTools Performance panel showing LCP = 0.08s and CLS = 0.72 on the current page.</p>
 
-         <h3>Median Calculation</h3>
-         <p>With box-shadow: 42, 43, 44, 45, 41 → sorted: 41, 42, 43, 44, 45 → median = <strong>43ms</strong></p>
-         <p>Without box-shadow: 38, 37, 39, 38, 37 → sorted: 37, 37, 38, 38, 39 → median = <strong>38ms</strong></p>
+   <h3>Interpretation</h3>
+   <p>The LCP of 0.08s means the page renders very quickly. However, the CLS of 0.72 is poor, meaning the layout shifts during load. This suggests the main performance issue is layout stability, not rendering speed.</p>
 
-         <h3>Interpretation</h3>
-         <p>The median render time with box-shadow (43ms) is 5ms higher than without (38ms). This suggests box-shadow adds a small but measurable rendering cost. However, with only 5 trials and a single machine, I cannot claim this generalizes to all devices.</p>
+   <h3>Limitation</h3>
+   <p>Due to time constraints, I could only take one measurement. A full experiment would require 5 trials with and without <code>box-shadow</code>, plus more devices.</p>
 
-         <h3>Test Environment</h3>
-         <ul>
-            <li>Browser: Chrome 120</li>
-            <li>Machine: Windows 11, 16GB RAM</li>
-            <li>Viewport: 1200px</li>
-            <li>Measurement tool: DevTools Performance tab, FCP</li>
-         </ul>
+   <h3>Test Environment</h3>
+   <ul>
+      <li>Browser: Chrome</li>
+      <li>Machine: Windows 11, 16GB RAM</li>
+      <li>Viewport: 1200px</li>
+      <li>Measurement tool: DevTools Performance tab (Local metrics)</li>
+   </ul>
 
-         <h3>Reflection</h3>
-         <p>The experiment supports the claim that box-shadow adds rendering cost, but the difference is small. A larger sample size and more devices would be needed to generalize the result.</p>
-      </section>
+   <h3>Reflection</h3>
+   <p>The experiment is incomplete due to time constraints, but the data shows the page renders quickly. The high CLS suggests I should investigate layout stability as a future improvement. I cannot claim the box-shadow hypothesis is supported without more trials.</p>
+</section>
 
    </section>
 
