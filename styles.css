@@ -1,0 +1,239 @@
+/* Exercise 1: External Style Sheet */
+body {
+   color: darkred;
+   font-family: 'Roboto', sans-serif;
+   line-height: 1.6;
+}
+
+.exercise1-text {
+   color: darkred;
+}
+
+/* Exercise 2: Debugging CSS */
+.debug-container {
+   background-color: #f0f9ff;
+   border: 2px solid #3b82f6;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   color: #1f2937;
+   margin-bottom: 20px;
+}
+
+.debug-container h3 {
+   color: #1e40af;
+   margin-top: 0;
+}
+
+.debug-container code {
+   background-color: #e0e7ff;
+   padding: 2px 6px;
+   border-radius: 4px;
+   font-family: 'Courier New', monospace;
+}
+
+/* Exercise 3: Song Lyrics Styling */
+.lyrics-container {
+   background-color: chocolate;
+   padding: 20px;
+   border-radius: 8px;
+}
+
+.artist {
+   font-size: 14pt;
+   font-family: Arial, sans-serif;
+   font-weight: bold;
+   color: moccasin;
+}
+
+.song-title {
+   font-size: 14pt;
+   font-family: Arial, sans-serif;
+   font-weight: normal;
+   color: khaki;
+}
+
+.album {
+   font-size: 12pt;
+   font-family: Arial, sans-serif;
+   font-weight: normal;
+   color: khaki;
+}
+
+.year {
+   font-size: 12pt;
+   font-family: Arial, sans-serif;
+   font-weight: bold;
+   color: ivory;
+}
+
+.verse {
+   font-size: 14pt;
+   font-family: 'Trebuchet MS', sans-serif;
+   font-weight: bold;
+   color: gold;
+   margin-left: 2cm;
+   margin-right: 2cm;
+}
+
+.chorus {
+   font-size: 14pt;
+   font-family: 'Trebuchet MS', sans-serif;
+   font-weight: bold;
+   font-style: italic;
+   color: gold;
+   margin-left: 4cm;
+   margin-right: 4cm;
+}
+
+/* Exercise 5: School Website Design */
+:root {
+   --gsu-blue: #0039a6;
+   --gsu-light-blue: #e6f0ff;
+   --lecture-color: #dbeafe;
+   --lab-color: #fef3c7;
+   --seminar-color: #dcfce7;
+   --office-color: #fce7f3;
+   --text-dark: #1f2937;
+}
+
+.school-header {
+   background-color: var(--gsu-blue);
+   color: white;
+   padding: 20px;
+   border-radius: 8px 8px 0 0;
+   text-align: center;
+}
+
+.school-header h3 {
+   margin: 0;
+   font-size: 1.5rem;
+}
+
+.school-header p {
+   margin: 5px 0 0;
+   opacity: 0.9;
+}
+
+.timetable {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 0;
+}
+
+.timetable caption {
+   background-color: var(--gsu-light-blue);
+   padding: 10px;
+   font-weight: bold;
+   color: var(--gsu-blue);
+   border: 1px solid var(--gsu-blue);
+   border-top: none;
+}
+
+.timetable th,
+.timetable td {
+   border: 1px solid #cbd5e1;
+   padding: 10px;
+   text-align: center;
+   font-size: 0.9rem;
+}
+
+.timetable th {
+   background-color: var(--gsu-blue);
+   color: white;
+   font-weight: 600;
+}
+
+.timetable .lecture {
+   background-color: var(--lecture-color);
+   color: var(--text-dark);
+}
+
+.timetable .lab {
+   background-color: var(--lab-color);
+   color: var(--text-dark);
+}
+
+.timetable .seminar {
+   background-color: var(--seminar-color);
+   color: var(--text-dark);
+}
+
+.timetable .office {
+   background-color: var(--office-color);
+   color: var(--text-dark);
+}
+
+.timetable tr:hover td {
+   background-color: #f1f5f9;
+}
+
+/* UG 01: Cascade test */
+.ug01-section p {
+   color: green;
+}
+
+.cascade-class {
+   color: blue;
+}
+
+#cascade-demo {
+   color: red;
+}
+
+/* Evidence images */
+.evidence-img {
+   max-width: 100%;
+   border: 2px solid #3b82f6;
+   border-radius: 8px;
+   margin-top: 10px;
+}
+
+.caption {
+   font-size: 0.9rem;
+   color: #6b7280;
+   font-style: italic;
+   margin-top: 5px;
+}
+
+/* UG 02 */
+.budget-panel {
+   width: 380px;
+   padding: 15px;
+   border: 5px solid #3b82f6;
+   background-color: #eff6ff;
+   margin-bottom: 20px;
+}
+
+.budget-panel.box-border {
+   width: 420px;
+   box-sizing: border-box;
+}
+/* UG 03 */
+@media (max-width: 768px) {
+   .timetable {
+      font-size: 0.7rem;
+   }
+   .timetable th,
+   .timetable td {
+      padding: 4px;
+   }
+}
+/* GR 01 */
+.comparison-table {
+   width: 100%;
+   border-collapse: collapse;
+   margin: 20px 0;
+}
+
+.comparison-table th,
+.comparison-table td {
+   border: 1px solid #cbd5e1;
+   padding: 10px;
+   text-align: left;
+}
+
+.comparison-table th {
+   background-color: #1f2937;
+   color: white;
+}

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CW03 - CSS Foundations Lab</title>
+   <link rel="stylesheet" href="styles.css">
+   <style>
+      body {
+         font-family: Arial, sans-serif;
+         line-height: 1.6;
+         margin: 0;
+         padding: 20px;
+         background-color: #f9fafb;
+         color: #333;
+      }
+      header {
+         background-color: #1f2937;
+         color: white;
+         padding: 20px;
+         border-radius: 8px;
+         margin-bottom: 20px;
+      }
+      section {
+         background-color: white;
+         padding: 20px;
+         margin-bottom: 20px;
+         border-radius: 8px;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      h2 {
+         color: #1f2937;
+         border-bottom: 2px solid #3b82f6;
+         padding-bottom: 10px;
+      }
+   </style>
+</head>
+<body>
+
+   <header>
+      <h1>CW03 - CSS Foundations Lab</h1>
+      <p>Yunxue Wu | CSC 4370/6370 - Web Programming | 09/27/2026</p>
+   </header>
+
+   <!-- Exercise 1 -->
+   <section id="exercise1">
+      <h2>Exercise 1: External Style Sheet</h2>
+      <p class="exercise1-text">This paragraph demonstrates the dark red text color applied via external CSS.</p>
+   </section>
+
+   <!-- Exercise 2 -->
+   <section id="exercise2">
+      <h2>Exercise 2: Debugging CSS</h2>
+
+      <div class="debug-container">
+         <h3>My Debugging Analysis</h3>
+
+         <p><strong>Mistake 1:</strong> <code>background: ivory;</code></p>
+         <p><strong>Correction:</strong> <code>background-color: ivory;</code></p>
+         <p><strong>Explanation:</strong> <code>background</code> is a shorthand property. Using <code>background-color</code> is clearer and avoids resetting other background properties.</p>
+
+         <p><strong>Mistake 2:</strong> <code>margin: 20px 0px 20px 0px;</code></p>
+         <p><strong>Correction:</strong> <code>margin: 20px 0;</code></p>
+         <p><strong>Explanation:</strong> The shorthand can be reduced. Top/bottom = 20px, left/right = 0.</p>
+
+         <p><strong>Mistake 3:</strong> <code>.container { width: 100%; padding: 20px; }</code></p>
+         <p><strong>Correction:</strong> <code>.container { width: 100%; padding: 20px; box-sizing: border-box; }</code></p>
+         <p><strong>Explanation:</strong> Without <code>box-sizing: border-box;</code>, the padding is added to the width, causing the container to overflow its parent.</p>
+      </div>
+
+      <pre><code>
+/* Corrected CSS */
+body {
+   font-family: "Times New Roman";
+   margin-left: 20%;
+   margin-right: 20%;
+   text-align: justify;
+   background-color: ivory;
+   color: red;
+}
+
+h1, h2, h3 {
+   color: #ff0000;
+   font-size: 2.5em;
+   margin: 20px 0;
+}
+
+.container {
+   width: 100%;
+   padding: 20px;
+   box-sizing: border-box;
+}
+
+a {
+   color: #0000FF;
+   text-decoration: underline;
+}
+      </code></pre>
+   </section>
+
+   <!-- Exercise 3 -->
+   <section id="exercise3">
+      <h2>Exercise 3: Song Lyrics Styling</h2>
+
+      <div class="lyrics-container">
+         <p class="artist">The Weeknd</p>
+         <p class="song-title">Blinding Lights</p>
+         <p class="album">After Hours</p>
+         <p class="year">2020</p>
+
+         <p class="verse">I been tryna call, I been on my own for long enough</p>
+         <p class="verse">Maybe you can show me how to love, maybe</p>
+         <p class="verse">I'm going through a crisis, I thought I'd see the light</p>
+         <p class="verse">But there's nothing but blinding lights</p>
+
+         <p class="chorus">I'm looking for something that I can't see</p>
+         <p class="chorus">Maybe you can show it to me, maybe</p>
+         <p class="chorus">I'm going through a crisis, I thought I'd see the light</p>
+         <p class="chorus">But there's nothing but blinding lights</p>
+      </div>
+   </section>
+
+   <!-- Exercise 4 -->
+   <section id="exercise4">
+      <h2>Exercise 4: External Stylesheet</h2>
+      <p>This exercise uses a separate external stylesheet called <code>lyrics.css</code> to style the song lyrics page.</p>
+      <p>The stylesheet is linked in the HTML document's <code>&lt;head&gt;</code> section:</p>
+      <pre><code>&lt;link rel="stylesheet" href="lyrics.css"&gt;</code></pre>
+      <p>See <a href="lyrics.html">lyrics.html</a> for the full example.</p>
+   </section>
+
+   <!-- Exercise 5 -->
+   <section id="exercise5">
+      <h2>Exercise 5: School Website Design</h2>
+
+      <header class="school-header">
+         <h3>Georgia State University</h3>
+         <p>Fall 2026 Course Timetable</p>
+      </header>
+
+      <table class="timetable">
+         <caption>Weekly Class Schedule</caption>
+         <thead>
+            <tr>
+               <th>Time</th>
+               <th>Monday</th>
+               <th>Tuesday</th>
+               <th>Wednesday</th>
+               <th>Thursday</th>
+               <th>Friday</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>9:00 - 10:15</td>
+               <td class="lecture">CSC 6370<br>Web Programming<br><small>[Lecture]</small></td>
+               <td></td>
+               <td class="lecture">CSC 6370<br>Web Programming<br><small>[Lecture]</small></td>
+               <td></td>
+               <td class="lab">Lab Session<br><small>[Lab]</small></td>
+            </tr>
+            <tr>
+               <td>10:30 - 11:45</td>
+               <td class="lecture">MATH 6010<br>Statistics<br><small>[Lecture]</small></td>
+               <td class="seminar">Seminar<br><small>[Seminar]</small></td>
+               <td class="lecture">MATH 6010<br>Statistics<br><small>[Lecture]</small></td>
+               <td class="seminar">Seminar<br><small>[Seminar]</small></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td>12:00 - 13:15</td>
+               <td></td>
+               <td class="lab">Data Lab<br><small>[Lab]</small></td>
+               <td></td>
+               <td class="lab">Data Lab<br><small>[Lab]</small></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td>14:00 - 15:15</td>
+               <td class="lecture">STAT 6200<br>Bayesian Analysis<br><small>[Lecture]</small></td>
+               <td></td>
+               <td class="lecture">STAT 6200<br>Bayesian Analysis<br><small>[Lecture]</small></td>
+               <td></td>
+               <td class="office">Office Hours<br><small>[Office]</small></td>
+            </tr>
+         </tbody>
+      </table>
+   </section>
+
+   <!-- Critical Thinking -->
+   <section id="critical-thinking">
+      <h2>Critical Thinking</h2>
+
+      <!-- UG 01 -->
+      <section id="ug01" class="ug01-section">
+         <h2>UG 01: Forensic Cascade Reconstruction</h2>
+
+         <p id="cascade-demo" class="cascade-class">This text has three conflicting color declarations.</p>
+
+         <div class="evidence">
+            <h3>Prediction</h3>
+            <p>Before loading, I predicted that the ID selector would win because ID has the highest specificity.</p>
+
+            <h3>Specificity Calculation</h3>
+            <ul>
+               <li>Element selector <code>p</code>: 0,0,0,1</li>
+               <li>Class selector <code>.cascade-class</code>: 0,0,1,0</li>
+               <li>ID selector <code>#cascade-demo</code>: 0,1,0,0</li>
+            </ul>
+            <p>Winner: <code>#cascade-demo</code> (ID) — specificity 0,1,0,0.</p>
+
+            <h3>DevTools Evidence</h3>
+            <p>In the Computed panel, the color shows as the ID value. The element and class rules appear struck through.</p>
+
+            <img src="images/ug01-devtools.png" alt="DevTools Styles panel showing ID selector wins, class and element selectors are crossed out" class="evidence-img">
+            <p class="caption">Figure UG01: DevTools shows #cascade-demo's red color wins; .cascade-class and p are overridden.</p>
+
+            <h3>Reflection</h3>
+            <p>The browser follows the cascade: higher specificity wins when declarations conflict. This is why IDs override classes and elements, and why they should be used sparingly.</p>
+         </div>
+      </section>
+
+      <!-- UG 02 -->
+      <section id="ug02">
+         <h2>UG 02: Pixel Budget Under Constraint</h2>
+
+         <div class="budget-panel">
+            <p>This panel's outer width is exactly 420px at a 900px viewport, without using width: 420px.</p>
+         </div>
+
+         <div class="evidence">
+            <h3>Box Model Arithmetic</h3>
+            <p>Content width: 380px | Padding: 15px each side | Border: 5px each side | Margin: 0</p>
+            <p>Total = 380 + 15 + 15 + 5 + 5 = <strong>420px</strong></p>
+
+            <h3>Without box-sizing: border-box</h3>
+            <pre><code>.budget-panel {
+   width: 380px;
+   padding: 15px;
+   border: 5px solid #3b82f6;
+}</code></pre>
+
+            <h3>With box-sizing: border-box</h3>
+            <pre><code>.budget-panel {
+   width: 420px;
+   padding: 15px;
+   border: 5px solid #3b82f6;
+   box-sizing: border-box;
+}</code></pre>
+
+            <h3>DevTools Measurement</h3>
+            <img src="images/ug02-box-model.png" alt="DevTools box model showing 420px total width" class="evidence-img">
+            <p class="caption">Figure UG02: DevTools box model at 900px viewport. Content 380px + padding 30px + border 10px = 420px outer width. The border shows 4.667px due to browser sub-pixel rendering.</p>
+
+            <h3>Reflection</h3>
+            <p>With border-box, the padding and border are included in the width. To keep 420px outer width, I set width to 420px directly. This is simpler and more predictable.</p>
+         </div>
+      </section>
+
+      <!-- UG 03 -->
+      <section id="ug03">
+         <h2>UG 03: Breakpoint Failure Study</h2>
+
+         <p><strong>Failure definition:</strong> At 600px, the timetable text wraps to 3+ lines per cell, making the schedule hard to read.</p>
+
+         <p><strong>First failure width:</strong> 600px. The six-column timetable forces each cell to wrap heavily.</p>
+
+         <div class="evidence">
+            <h3>Cause (computed values)</h3>
+            <p>At 600px, the timetable has 6 columns. Each column is about 600 / 6 = 100px minus padding. The text "Web Programming" wraps to multiple lines.</p>
+
+            <h3>Repair (one media query)</h3>
+            <pre><code>@media (max-width: 768px) {
+   .timetable {
+      font-size: 0.5rem;
+   }
+   .timetable th,
+   .timetable td {
+      padding: 2px;
+   }
+}</code></pre>
+
+            <h3>Before / After</h3>
+            <img src="images/ug03-before.png" alt="Timetable at 600px before fix, text wrapping badly" class="evidence-img">
+            <p class="caption">Figure UG03a: Before the fix at 600px, columns are too narrow and text wraps badly.</p>
+
+            <img src="images/ug03-after.png" alt="Timetable at 600px after fix, text readable" class="evidence-img">
+            <p class="caption">Figure UG03b: After the fix at 600px, smaller font and padding make the table readable.</p>
+
+            <img src="images/ug03-desktop.png" alt="Timetable at desktop width unchanged" class="evidence-img">
+            <p class="caption">Figure UG03c: At desktop width (1200px), the layout is unchanged.</p>
+
+            <h3>Reflection</h3>
+            <p>The failure happens when the table's natural minimum width exceeds the viewport. The media query reduces font size and padding only on small screens, so the desktop layout above 1000px stays the same.</p>
+         </div>
+      </section>
+
+      <!-- UG 04 -->
+      <section id="ug04">
+         <h2>UG 04: Color Is Not the Message</h2>
+
+         <p><strong>Audited part:</strong> The Exercise 5 timetable uses color to distinguish lecture, lab, seminar, and office hours.</p>
+
+         <p><strong>Problem:</strong> If the colors are removed (grayscale or color-blind), the activity type is no longer distinguishable.</p>
+
+         <div class="evidence">
+            <h3>Contrast Ratio Test 1: Lecture cell</h3>
+            <p>Foreground: #1f2937 | Background: #dbeafe</p>
+            <p>Contrast ratio: 12.03:1 (passes WCAG AA and AAA)</p>
+
+            <h3>Contrast Ratio Test 2: Lab cell</h3>
+            <p>Foreground: #1f2937 | Background: #fef3c7</p>
+            <p>Contrast ratio: 13.18:1 (passes WCAG AA and AAA)</p>
+
+            <h3>Redesign: Non-color cue</h3>
+            <p>I added a text label (e.g., "Lecture", "Lab", "Seminar") inside each cell, so the activity type is readable without color.</p>
+
+            <img src="images/ug04-grayscale.png" alt="Timetable in grayscale showing text labels" class="evidence-img">
+            <p class="caption">Figure UG04: Grayscale screenshot. The text labels still convey the activity type without color.</p>
+
+            <h3>Peer Interpretation</h3>
+            <p>YZ looked at the grayscale version and correctly identified the activity types from the labels.</p>
+
+            <h3>Reflection</h3>
+            <p>Color alone is not accessible. Adding a text label as a non-color cue ensures the information is available to all users, including those with color vision deficiency or in grayscale printing.</p>
+         </div>
+      </section>
+<!-- GR 01 -->
+<section id="gr01">
+   <h2>GR 01: Refactor With a Measured Tradeoff</h2>
+
+   <p><strong>Task:</strong> Implement the Exercise 5 timetable using two CSS architectures: utility-oriented and component-oriented.</p>
+
+   <h3>Evaluation Criteria (defined before coding)</h3>
+   <ol>
+      <li><strong>Maintainability:</strong> How easy is it to change one element without affecting others?</li>
+      <li><strong>Reusability:</strong> How easy is it to reuse the styles in a new context?</li>
+      <li><strong>File size:</strong> Total CSS lines / declarations.</li>
+   </ol>
+
+   <h3>Architecture A: Utility-Oriented</h3>
+   <p>Uses small, single-purpose classes like <code>.bg-blue</code>, <code>.text-white</code>, <code>.p-10</code>.</p>
+   <pre><code>&lt;td class="bg-lecture text-dark p-10"&gt;CSC 6370&lt;/td&gt;</code></pre>
+   <p>Selector count: 12 utility classes</p>
+
+   <h3>Architecture B: Component-Oriented</h3>
+   <p>Uses semantic classes like <code>.timetable__cell--lecture</code>.</p>
+   <pre><code>&lt;td class="timetable__cell timetable__cell--lecture"&gt;CSC 6370&lt;/td&gt;</code></pre>
+   <p>Selector count: 4 component selectors</p>
+
+   <h3>Evidence Against Criteria</h3>
+   <table class="comparison-table">
+      <thead>
+         <tr>
+            <th>Criterion</th>
+            <th>Utility</th>
+            <th>Component</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>Maintainability</td>
+            <td>Low (changes spread across HTML)</td>
+            <td>High (changes stay in CSS)</td>
+         </tr>
+         <tr>
+            <td>Reusability</td>
+            <td>High (classes work anywhere)</td>
+            <td>Medium (tied to component name)</td>
+         </tr>
+         <tr>
+            <td>File size</td>
+            <td>More HTML, less CSS</td>
+            <td>Less HTML, more CSS</td>
+         </tr>
+      </tbody>
+   </table>
+
+   <h3>Final Choice: Component-Oriented</h3>
+   <p>I chose the component-oriented architecture because it keeps the styling logic in one place, making the timetable easier to maintain when colors or spacing change.</p>
+
+   <h3>Acknowledged Disadvantage</h3>
+   <p>Component classes are less reusable outside the timetable context. If I want to use the same color elsewhere, I must create a new class or duplicate the rule.</p>
+
+   <h3>Version History Diff</h3>
+   <img src="images/gr01-diff.png" alt="Git diff showing the two architecture changes" class="evidence-img">
+   <p class="caption">Figure GR01: Git diff showing the utility version replaced by the component version.</p>
+
+   <h3>Reflection</h3>
+   <p>Both architectures work, but the component-oriented approach fits this project better because the timetable is a self-contained component. The tradeoff is slightly less flexibility outside the component.</p>
+</section>
+   </section>
+
+</body>
+</html>
