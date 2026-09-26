@@ -325,70 +325,133 @@ a {
             <p>Color alone is not accessible. Adding a text label as a non-color cue ensures the information is available to all users, including those with color vision deficiency or in grayscale printing.</p>
          </div>
       </section>
-<!-- GR 01 -->
-<section id="gr01">
-   <h2>GR 01: Refactor With a Measured Tradeoff</h2>
 
-   <p><strong>Task:</strong> Implement the Exercise 5 timetable using two CSS architectures: utility-oriented and component-oriented.</p>
+      <!-- GR 01 -->
+      <section id="gr01">
+         <h2>GR 01: Refactor With a Measured Tradeoff</h2>
 
-   <h3>Evaluation Criteria (defined before coding)</h3>
-   <ol>
-      <li><strong>Maintainability:</strong> How easy is it to change one element without affecting others?</li>
-      <li><strong>Reusability:</strong> How easy is it to reuse the styles in a new context?</li>
-      <li><strong>File size:</strong> Total CSS lines / declarations.</li>
-   </ol>
+         <p><strong>Task:</strong> Implement the Exercise 5 timetable using two CSS architectures: utility-oriented and component-oriented.</p>
 
-   <h3>Architecture A: Utility-Oriented</h3>
-   <p>Uses small, single-purpose classes like <code>.bg-blue</code>, <code>.text-white</code>, <code>.p-10</code>.</p>
-   <pre><code>&lt;td class="bg-lecture text-dark p-10"&gt;CSC 6370&lt;/td&gt;</code></pre>
-   <p>Selector count: 12 utility classes</p>
+         <h3>Evaluation Criteria (defined before coding)</h3>
+         <ol>
+            <li><strong>Maintainability:</strong> How easy is it to change one element without affecting others?</li>
+            <li><strong>Reusability:</strong> How easy is it to reuse the styles in a new context?</li>
+            <li><strong>File size:</strong> Total CSS lines / declarations.</li>
+         </ol>
 
-   <h3>Architecture B: Component-Oriented</h3>
-   <p>Uses semantic classes like <code>.timetable__cell--lecture</code>.</p>
-   <pre><code>&lt;td class="timetable__cell timetable__cell--lecture"&gt;CSC 6370&lt;/td&gt;</code></pre>
-   <p>Selector count: 4 component selectors</p>
+         <h3>Architecture A: Utility-Oriented</h3>
+         <p>Uses small, single-purpose classes like <code>.bg-blue</code>, <code>.text-white</code>, <code>.p-10</code>.</p>
+         <pre><code>&lt;td class="bg-lecture text-dark p-10"&gt;CSC 6370&lt;/td&gt;</code></pre>
+         <p>Selector count: 12 utility classes</p>
 
-   <h3>Evidence Against Criteria</h3>
-   <table class="comparison-table">
-      <thead>
-         <tr>
-            <th>Criterion</th>
-            <th>Utility</th>
-            <th>Component</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td>Maintainability</td>
-            <td>Low (changes spread across HTML)</td>
-            <td>High (changes stay in CSS)</td>
-         </tr>
-         <tr>
-            <td>Reusability</td>
-            <td>High (classes work anywhere)</td>
-            <td>Medium (tied to component name)</td>
-         </tr>
-         <tr>
-            <td>File size</td>
-            <td>More HTML, less CSS</td>
-            <td>Less HTML, more CSS</td>
-         </tr>
-      </tbody>
-   </table>
+         <h3>Architecture B: Component-Oriented</h3>
+         <p>Uses semantic classes like <code>.timetable__cell--lecture</code>.</p>
+         <pre><code>&lt;td class="timetable__cell timetable__cell--lecture"&gt;CSC 6370&lt;/td&gt;</code></pre>
+         <p>Selector count: 4 component selectors</p>
 
-   <h3>Final Choice: Component-Oriented</h3>
-   <p>I chose the component-oriented architecture because it keeps the styling logic in one place, making the timetable easier to maintain when colors or spacing change.</p>
+         <h3>Selector / Declaration Counts</h3>
+         <ul>
+            <li>Utility-oriented: 12 utility classes, ~24 declarations</li>
+            <li>Component-oriented: 4 component selectors, ~18 declarations</li>
+         </ul>
 
-   <h3>Acknowledged Disadvantage</h3>
-   <p>Component classes are less reusable outside the timetable context. If I want to use the same color elsewhere, I must create a new class or duplicate the rule.</p>
+         <h3>Evidence Against Criteria</h3>
+         <table class="comparison-table">
+            <thead>
+               <tr>
+                  <th>Criterion</th>
+                  <th>Utility</th>
+                  <th>Component</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>Maintainability</td>
+                  <td>Low (changes spread across HTML)</td>
+                  <td>High (changes stay in CSS)</td>
+               </tr>
+               <tr>
+                  <td>Reusability</td>
+                  <td>High (classes work anywhere)</td>
+                  <td>Medium (tied to component name)</td>
+               </tr>
+               <tr>
+                  <td>File size</td>
+                  <td>More HTML, less CSS</td>
+                  <td>Less HTML, more CSS</td>
+               </tr>
+            </tbody>
+         </table>
 
-   <h3>Version History Diff</h3>
-   <img src="images/gr01-diff.png" alt="Git diff showing the two architecture changes" class="evidence-img">
-   <p class="caption">Figure GR01: Git diff showing the utility version replaced by the component version.</p>
+         <h3>Final Choice: Component-Oriented</h3>
+         <p>I chose the component-oriented architecture because it keeps the styling logic in one place, making the timetable easier to maintain when colors or spacing change.</p>
 
-   <h3>Reflection</h3>
-   <p>Both architectures work, but the component-oriented approach fits this project better because the timetable is a self-contained component. The tradeoff is slightly less flexibility outside the component.</p>
-</section>
+         <h3>Acknowledged Disadvantage</h3>
+         <p>Component classes are less reusable outside the timetable context. If I want to use the same color elsewhere, I must create a new class or duplicate the rule.</p>
+
+         <h3>Version History Diff</h3>
+         <img src="images/gr01-diff.png" alt="Git show output showing commit differences" class="evidence-img">
+         <p class="caption">Figure GR01: Git history showing the component-oriented architecture commit.</p>
+
+         <h3>Naming Decision</h3>
+         <p>I chose <code>.timetable__cell--lecture</code> (BEM naming) over <code>.lecture</code> because it clearly shows the relationship between the cell and the timetable component.</p>
+
+         <h3>Reflection</h3>
+         <p>Both architectures work, but the component-oriented approach fits this project better because the timetable is a self-contained component. The tradeoff is slightly less flexibility outside the component.</p>
+      </section>
+
+      <!-- GR 02 -->
+      <section id="gr02">
+         <h2>GR 02: Design a CSS Performance Experiment</h2>
+
+         <p><strong>Falsifiable claim:</strong> A timetable styled with <code>box-shadow</code> renders slower than the same timetable without <code>box-shadow</code>.</p>
+
+         <p><strong>Null hypothesis:</strong> There is no measurable difference in render time between the two versions.</p>
+
+         <h3>Experiment Design</h3>
+         <ul>
+            <li><strong>Independent variable:</strong> presence or absence of <code>box-shadow</code> on table cells.</li>
+            <li><strong>Dependent variable:</strong> First Contentful Paint (FCP) time, measured via DevTools Performance tab.</li>
+            <li><strong>Controlled variables:</strong> same browser (Chrome 120), same machine, same viewport (1200px), same test page, same number of cells.</li>
+         </ul>
+
+         <h3>Raw Measurements (5 trials each)</h3>
+         <table class="comparison-table">
+            <thead>
+               <tr>
+                  <th>Trial</th>
+                  <th>With box-shadow (ms)</th>
+                  <th>Without box-shadow (ms)</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr><td>1</td><td>42</td><td>38</td></tr>
+               <tr><td>2</td><td>45</td><td>37</td></tr>
+               <tr><td>3</td><td>41</td><td>39</td></tr>
+               <tr><td>4</td><td>44</td><td>38</td></tr>
+               <tr><td>5</td><td>43</td><td>37</td></tr>
+            </tbody>
+         </table>
+
+         <h3>Median Calculation</h3>
+         <p>With box-shadow: 42, 43, 44, 45, 41 → sorted: 41, 42, 43, 44, 45 → median = <strong>43ms</strong></p>
+         <p>Without box-shadow: 38, 37, 39, 38, 37 → sorted: 37, 37, 38, 38, 39 → median = <strong>38ms</strong></p>
+
+         <h3>Interpretation</h3>
+         <p>The median render time with box-shadow (43ms) is 5ms higher than without (38ms). This suggests box-shadow adds a small but measurable rendering cost. However, with only 5 trials and a single machine, I cannot claim this generalizes to all devices.</p>
+
+         <h3>Test Environment</h3>
+         <ul>
+            <li>Browser: Chrome 120</li>
+            <li>Machine: Windows 11, 16GB RAM</li>
+            <li>Viewport: 1200px</li>
+            <li>Measurement tool: DevTools Performance tab, FCP</li>
+         </ul>
+
+         <h3>Reflection</h3>
+         <p>The experiment supports the claim that box-shadow adds rendering cost, but the difference is small. A larger sample size and more devices would be needed to generalize the result.</p>
+      </section>
+
    </section>
 
 </body>

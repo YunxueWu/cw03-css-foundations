@@ -209,17 +209,19 @@ body {
    width: 420px;
    box-sizing: border-box;
 }
+
 /* UG 03 */
 @media (max-width: 768px) {
    .timetable {
-      font-size: 0.7rem;
+      font-size: 0.5rem;
    }
    .timetable th,
    .timetable td {
-      padding: 4px;
+      padding: 2px;
    }
 }
-/* GR 01 */
+
+/* GR 01 and GR 02 */
 .comparison-table {
    width: 100%;
    border-collapse: collapse;
@@ -229,7 +231,7 @@ body {
 .comparison-table th,
 .comparison-table td {
    border: 1px solid #cbd5e1;
-   padding: 10px;
+   padding: 8px;
    text-align: left;
 }
 
